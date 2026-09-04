@@ -4,7 +4,7 @@ import ApiConfig from "../../api_config_model";
 /**
  * @extends NoBodyRequest
  */
-export default class DeleteRequest extends NoBodyRequest
+export default class HeadRequest extends NoBodyRequest
 {
     /**
      * @param {Object} props 
