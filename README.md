@@ -1,3 +1,8 @@
+install this using npm:
+```txt
+npm i koponogi-api-request-template
+```
+
 # js-api-request
 
 > [EN] A lightweight, class-based JavaScript wrapper around `fetch` for REST API requests (GET, POST, PUT, PATCH, DELETE, HEAD) with centralized config, callbacks, and validation.
