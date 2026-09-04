@@ -1,4 +1,4 @@
-import BaseApiRequest from "./api_request_model";
+import BaseApiRequest from "./api_request_model.js";
 
 export default class APIRequestValidation
 {

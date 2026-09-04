@@ -1,5 +1,5 @@
-import NoBodyRequest from "../no_body_api_request_model";
-import ApiConfig from "../../api_config_model";
+import NoBodyRequest from "koponogi-api-request-template/api_request/api_request_models/no_body_api_request_model.js";
+import ApiConfig from "koponogi-api-request-template/api_request/api_config_model.js";
 
 /**
  * @extends NoBodyRequest
@@ -9,9 +9,10 @@ export default class DeleteRequest extends NoBodyRequest
     /**
      * @param {Object} props 
      * @param {ApiConfig} props.config 
+     * @param {Object} props.query 
      */
-    constructor({config})
+    constructor({config, query})
     {
-        super(config, "DELETE");
+        super(config, "DELETE", query);
     }
 }

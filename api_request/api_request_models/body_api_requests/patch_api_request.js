@@ -1,5 +1,5 @@
-import BodyRequest from "../body_api_request_model";
-import ApiConfig from "../../api_config_model";
+import BodyRequest from "koponogi-api-request-template/api_request/api_request_models/body_api_request_model.js";
+import ApiConfig from "koponogi-api-request-template/api_request/api_config_model.js";
 
 /**
  * @extends BodyRequest

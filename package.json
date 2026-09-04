@@ -1,9 +1,9 @@
 {
-  "name": "koponogi-js-request-template",
-  "version": "1.0.1",
-  "description": "A lightweight and robust utility library designed to streamline HTTP API requests, eliminating boilerplate code for validation, payloads, and request configurations.",
+  "name": "koponogi-api-request-template",
+  "version": "1.1.0",
+  "description": "template api request for js",
   "keywords": [
-    "js"
+    "api-request"
   ],
   "homepage": "https://github.com/SuciptoAbdullah/koponogi-js-request-template#readme",
   "bugs": {
@@ -18,6 +18,6 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "package.json"
   }
 }

@@ -1,5 +1,5 @@
-import ApiConfig from "../api_config_model";
-import BaseApiRequest from "../api_request_model";
+import ApiConfig from "koponogi-api-request-template/api_request/api_config_model.js";
+import BaseApiRequest from "koponogi-api-request-template/api_request/api_request_model.js";
 
 /**
  * Subclass untuk menangani HTTP Request yang menggunakan Body (POST, PUT, PATCH).

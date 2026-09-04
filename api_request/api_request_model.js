@@ -1,5 +1,5 @@
-import ApiConfig from "./api_config_model";
-import APIRequestValidation from "./api_reqeust_validation";
+import ApiConfig from "./api_config_model.js";
+import APIRequestValidation from "./api_reqeust_validation.js";
 /**
  * Class Abstrak untuk menangani request API.
  * Tidak boleh diinstansiasi secara langsung.
