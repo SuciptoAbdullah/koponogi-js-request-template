@@ -1,3 +1,16 @@
+## What is this repo's do??
+Write less, request more.
+koponogi-api-request-template is a modular utility library built for JavaScript/TypeScript, specifically designed to streamline and simplify HTTP network requests.
+This library significantly eliminates repetitive boilerplate code—such as manual configuration setup, request body handling, and parameter validation. Developers can simply invoke the provided classes and methods instantly, securely, and in a structured manner. Key Features:
+- Boilerplate-Free: Eliminates long and repetitive network configuration code across your application endpoints.
+- Modular Architecture: Promotes clean separation of request logic with dedicated classes for GET, POST, PUT, DELETE, PATCH, and HEAD methods.
+- Plug-and-Play: Enables fast and seamless API integration across modern project ecosystems.
+
+## instalation
+```txt
+npm i koponogi-api-request-template
+```
+
 # js-api-request
 
 > [EN] A lightweight, class-based JavaScript wrapper around `fetch` for REST API requests (GET, POST, PUT, PATCH, DELETE, HEAD) with centralized config, callbacks, and validation.
