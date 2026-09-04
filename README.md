@@ -6,7 +6,7 @@ This library significantly eliminates repetitive boilerplate code—such as manu
 - Modular Architecture: Promotes clean separation of request logic with dedicated classes for GET, POST, PUT, DELETE, PATCH, and HEAD methods.
 - Plug-and-Play: Enables fast and seamless API integration across modern project ecosystems.
 
-## instalation
+## installation
 ```txt
 npm i koponogi-api-request-template
 ```
