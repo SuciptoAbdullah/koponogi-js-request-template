@@ -38,18 +38,36 @@ export default class BodyRequest extends BaseApiRequest
     {
         try
         {
-            const response = await fetch(this.getFullUrl(), {
-                method: this.method,
-                headers: this.header,
-                body: JSON.stringify(this.body),
-            });
-
-            if ( super.validation.isRequestSuccess(response) ) {
-                throw new Error(`HTTP Error status: ${res.status}`);
+            if(super.validation.isFunction(this.onLoading))
+            {
+                this.onLoading();
             }
+            
+            const worker = new Worker("koponogi-api-request-template/api_request/worker/body_worker.js");
 
-            const data = await response.json();
-            this.response = data;
+            const requestJson = {
+                url : this.getFullUrl(),
+                method: this.method,
+                header: this.header,
+                body: this.body
+            };
+
+            worker.postMessage(requestJson);
+
+            worker.onmessage = (event) => {
+
+                /**@type {boolean} */
+                const success = event.data.status;
+
+                if(!success)
+                {
+                    const errorMessage = event.data.message;
+                    throw new Error(errorMessage);
+                }
+
+                const responseData = event.data.data;
+                this.response = responseData;
+            }
 
             if ( super.validation.isFunction( this.onSuccess ) ) {
                 this.onSuccess(this.response);

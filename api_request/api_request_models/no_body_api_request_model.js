@@ -1,5 +1,5 @@
-import BaseApiRequest from "../api_request_model.js";
-import ApiConfig from "../api_config_model.js";
+import ApiConfig from "koponogi-api-request-template/api_request/api_config_model.js";
+import BaseApiRequest from "koponogi-api-request-template/api_request/api_request_model.js";
 
 /**
  * Subclass untuk menangani HTTP Request tanpa Body (GET, DELETE, HEAD).
@@ -60,28 +60,46 @@ export default class NoBodyRequest extends BaseApiRequest
     {
         try
         {
-            const fullUrl = `${this.getFullUrl()}?${this.queryString}`;
-
-            const res = await fetch( fullUrl,
+            if(super.validation.isFunction(this.onLoading))
             {
-                method: this.method,
-                headers: this.header,
-            });
-
-            if ( !super.validation.isRequestSuccess(res) )
-            {
-                throw new Error(`HTTP Error status: ${res.status}\nError: ${res.statusText}`);
+                this.onLoading();
             }
 
-            const data = await res.json();
-            this.response = data;
+            const fullUrl = `${this.getFullUrl()}?${this.queryString}`;
 
+            const requestJson = {
+                url: fullUrl,
+                method: this.method,
+                header: this.header
+            };
+
+            const worker = new Worker("koponogi-api-request-template/api_request/worker/no_body_worker.js");
+
+            worker.postMessage(requestJson);
+
+            worker.onmessage = (event) => {
+                
+                const success = event.data.status;
+
+                if(!success)
+                {
+                    const errorMessage = event.data.message;
+                    throw new Error(errorMessage);
+                }
+
+                const responseData = event.data.data;
+
+                this.response = responseData;
+
+            }
+            
             if ( super.validation.isFunction(this.onSuccess) )
             {
                 this.onSuccess(this.response);
             }
 
             return this.response;
+
         }
         catch (err)
         {

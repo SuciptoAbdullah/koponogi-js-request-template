@@ -6,10 +6,13 @@ export default class ApiConfig
     #url;
     /**@type {Object} */
     #header;
+
     /**@type { (error: Error | any) => void } */
     onError;
     /**@type { (data: any) => void } */
     onSuccess;
+    /**@type { () => void } */
+    onLoading;
 
     /**
      * @param {Object} props
@@ -19,13 +22,14 @@ export default class ApiConfig
      * @param {(error: Error | any) => void} props.onError
      * @param {(data: any) => void} props.onSuccess
      */
-    constructor({domain = "", url = "", header = {}, onError = (error) => {}, onSuccess = () => {}})
+    constructor({domain = "", url = "", header = {}, onError = (error) => {}, onSuccess = () => {}}, onLoading = () => {})
     {
         this.#domain = domain;
         this.#url = url;
         this.#header = header;
         this.onError = onError;
         this.onSuccess = onSuccess;
+        this.onLoading = onLoading;
     }
 
     /**@returns {string} */
